@@ -1,1 +1,37 @@
-export const mockTransactions = []
+export const mockTransactions = [
+  { id: "txn_001", date: "2024-11-01", description: "Salary - November", category: "Salary", type: "income", amount: 45000 },
+  { id: "txn_002", date: "2024-11-03", description: "Grocery run - DMart", category: "Food", type: "expense", amount: 1840 },
+  { id: "txn_003", date: "2024-11-05", description: "Rent payment", category: "Rent", type: "expense", amount: 12000 },
+  { id: "txn_004", date: "2024-11-08", description: "Ola cab to office", category: "Transport", type: "expense", amount: 250 },
+  { id: "txn_005", date: "2024-11-12", description: "Swiggy dinner - biryani", category: "Food", type: "expense", amount: 320 },
+  { id: "txn_006", date: "2024-11-15", description: "Electricity bill - MSEB", category: "Utilities", type: "expense", amount: 850 },
+  { id: "txn_007", date: "2024-11-18", description: "Netflix subscription", category: "Entertainment", type: "expense", amount: 499 },
+  { id: "txn_008", date: "2024-11-22", description: "Apollo pharmacy", category: "Healthcare", type: "expense", amount: 450 },
+  { id: "txn_009", date: "2024-11-28", description: "Freelance payment - Rahul", category: "Freelance", type: "income", amount: 8500 },
+  
+  { id: "txn_010", date: "2024-12-01", description: "Salary - December", category: "Salary", type: "income", amount: 45000 },
+  { id: "txn_011", date: "2024-12-02", description: "Zepto grocery order", category: "Food", type: "expense", amount: 620 },
+  { id: "txn_012", date: "2024-12-05", description: "Rent payment", category: "Rent", type: "expense", amount: 12000 },
+  { id: "txn_013", date: "2024-12-10", description: "Myntra shopping", category: "Shopping", type: "expense", amount: 2100 },
+  { id: "txn_014", date: "2024-12-14", description: "Uber to airport", category: "Transport", type: "expense", amount: 800 },
+  { id: "txn_015", date: "2024-12-18", description: "Jio Mobile recharge", category: "Utilities", type: "expense", amount: 299 },
+  { id: "txn_016", date: "2024-12-22", description: "Movie night", category: "Entertainment", type: "expense", amount: 600 },
+  { id: "txn_017", date: "2024-12-25", description: "Christmas dinner", category: "Food", type: "expense", amount: 1500 },
+  { id: "txn_018", date: "2024-12-29", description: "Stocks dividend", category: "Investment", type: "income", amount: 1400 },
+  
+  { id: "txn_019", date: "2025-01-01", description: "Salary - January", category: "Salary", type: "income", amount: 45000 },
+  { id: "txn_020", date: "2025-01-04", description: "Rent", category: "Rent", type: "expense", amount: 12000 },
+  { id: "txn_021", date: "2025-01-08", description: "Blinkit groceries", category: "Food", type: "expense", amount: 450 },
+  { id: "txn_022", date: "2025-01-12", description: "Dental checkup", category: "Healthcare", type: "expense", amount: 1200 },
+  { id: "txn_023", date: "2025-01-15", description: "Electricity bill", category: "Utilities", type: "expense", amount: 920 },
+  { id: "txn_024", date: "2025-01-22", description: "BookMyShow - standup", category: "Entertainment", type: "expense", amount: 800 },
+  { id: "txn_025", date: "2025-01-28", description: "Zomato lunch", category: "Food", type: "expense", amount: 280 },
+  
+  { id: "txn_026", date: "2025-02-01", description: "Salary - February", category: "Salary", type: "income", amount: 45000 },
+  { id: "txn_027", date: "2025-02-04", description: "Rent payment", category: "Rent", type: "expense", amount: 12000 },
+  { id: "txn_028", date: "2025-02-09", description: "Amazon order - headphones", category: "Shopping", type: "expense", amount: 1850 },
+  { id: "txn_029", date: "2025-02-12", description: "Metro card recharge", category: "Transport", type: "expense", amount: 500 },
+  { id: "txn_030", date: "2025-02-16", description: "BigBasket essential", category: "Food", type: "expense", amount: 1340 },
+  { id: "txn_031", date: "2025-02-20", description: "Freelance - UX review", category: "Freelance", type: "income", amount: 6000 },
+  { id: "txn_032", date: "2025-02-25", description: "Pharmacy", category: "Healthcare", type: "expense", amount: 350 }
+]
