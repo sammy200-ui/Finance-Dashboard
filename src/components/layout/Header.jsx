@@ -1,5 +1,6 @@
-import { Menu } from 'lucide-react'
+import { Menu, User } from 'lucide-react'
 import { useLocation } from 'react-router-dom'
+import RoleToggle from '../ui/RoleToggle'
 
 const pageTitles = {
   '/': 'Dashboard',
@@ -20,7 +21,7 @@ function Header({ onMenuOpen }) {
       }}
     >
       <div className="flex items-center gap-3">
-        {/* hamburger — mobile */}
+      
         <button
           onClick={onMenuOpen}
           className="lg:hidden"
@@ -33,15 +34,16 @@ function Header({ onMenuOpen }) {
         </h1>
       </div>
 
-      {/* right side — role switcher comes in Phase 3, placeholder for now */}
-      <div className="flex items-center gap-3">
-        <div
-          className="text-xs px-2.5 py-1 rounded-full font-medium"
-          style={{ background: 'var(--bg-card)', color: 'var(--muted)', border: '1px solid var(--border)' }}
+      <div className="flex items-center gap-4">
+        <RoleToggle />
+        
+    
+        <div 
+          className="w-8 h-8 rounded-full flex items-center justify-center overflow-hidden"
+          style={{ background: 'var(--bg-card)', border: '1px solid var(--border)' }}
         >
-          Viewer
+          <User size={16} style={{ color: 'var(--muted)' }} />
         </div>
-        {/* TODO: wire role dropdown here in phase 3 */}
       </div>
     </header>
   )
