@@ -9,11 +9,9 @@ export default function RoleToggle() {
       <select
         value={role}
         onChange={(e) => setRole(e.target.value)}
-        className="text-xs px-2.5 py-1.5 rounded-full font-medium cursor-pointer focus:outline-none transition-colors"
+        className="text-xs px-2.5 py-1.5 rounded-full font-medium cursor-pointer focus:outline-none transition-colors border border-[var(--border)] bg-[var(--bg-card)]"
         style={{
-          background: 'var(--bg-card)',
           color: role === 'admin' ? 'var(--accent)' : 'var(--muted)',
-          border: '1px solid var(--border)'
         }}
       >
         <option value="viewer">Viewer</option>

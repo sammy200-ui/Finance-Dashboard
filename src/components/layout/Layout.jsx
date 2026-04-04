@@ -7,7 +7,7 @@ function Layout() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
-    <div className="flex min-h-screen" style={{ background: 'var(--bg-base)' }}>
+    <div className="flex min-h-screen bg-[var(--bg-base)] text-[var(--text)]">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
       {/* main area — pushed right on desktop */}
