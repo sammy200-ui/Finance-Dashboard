@@ -4,11 +4,6 @@ A personal finance dashboard built as part of an internship evaluation. It lets 
 
 ---
 
-## Screenshot
-
-> *(Add a screenshot after running locally)*
-
----
 
 ## Tech Stack
 
