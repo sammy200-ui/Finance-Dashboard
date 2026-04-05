@@ -37,6 +37,19 @@ body {
   border-radius: 4px;
 }
 
+/* main content offset for sidebar */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+@media (min-width: 1024px) {
+  .main-content {
+    margin-left: 15rem; /* matches sidebar w-60 = 240px */
+  }
+}
+
 /* fade-in for cards */
 .fade-in {
   animation: fadeIn 0.3s ease forwards;

@@ -7,14 +7,14 @@ function Layout() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
-    <div className="min-h-screen bg-[var(--bg-base)] text-[var(--text)]">
+    <div style={{ minHeight: '100vh', background: 'var(--bg-base)', color: 'var(--text)' }}>
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
-      {/* main area — pushed right on desktop */}
-      <div className="flex flex-col lg:pl-60 min-h-screen transition-all duration-300">
+      {/* main area — offset by sidebar width on desktop */}
+      <div className="main-content">
         <Header onMenuOpen={() => setSidebarOpen(true)} />
 
-        <main className="flex-1 p-5 md:p-6">
+        <main style={{ flex: 1, padding: '1.25rem' }}>
           <Outlet />
         </main>
       </div>
