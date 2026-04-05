@@ -7,11 +7,11 @@ function Layout() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
-    <div className="flex min-h-screen bg-[var(--bg-base)] text-[var(--text)]">
+    <div className="min-h-screen bg-[var(--bg-base)] text-[var(--text)]">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
       {/* main area — pushed right on desktop */}
-      <div className="flex-1 flex flex-col lg:ml-60">
+      <div className="flex flex-col lg:pl-60 min-h-screen transition-all duration-300">
         <Header onMenuOpen={() => setSidebarOpen(true)} />
 
         <main className="flex-1 p-5 md:p-6">
