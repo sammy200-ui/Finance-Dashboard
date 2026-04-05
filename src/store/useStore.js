@@ -6,16 +6,18 @@ export const useStore = create(
   persist(
     (set) => ({
       transactions: mockTransactions,
-      role: "viewer", // "viewer" | "admin"
+      role: "viewer",
+      theme: "dark",
       filters: {
         search: "",
         category: "all",
-        type: "all", // "all" | "income" | "expense"
-        sortBy: "date", // "date" | "amount"
+        type: "all",
+        sortBy: "date",
         sortOrder: "desc",
       },
 
       setRole: (role) => set({ role }),
+      setTheme: (theme) => set({ theme }),
 
       addTransaction: (txn) => set((state) => ({
         transactions: [txn, ...state.transactions]

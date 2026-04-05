@@ -16,7 +16,6 @@ export default function AddTransactionModal({ isOpen, onClose, initialData }) {
   
   const [error, setError] = useState('')
 
-  // If there's initial data, we're in edit mode. Pre-fill the form!
   useEffect(() => {
     if (initialData) {
       setFormData({
@@ -34,7 +33,6 @@ export default function AddTransactionModal({ isOpen, onClose, initialData }) {
     
     const parsedAmount = parseFloat(formData.amount)
     
-    // Quick and practical basic validation
     if (!formData.description || !formData.date || isNaN(parsedAmount)) {
       setError('Please properly fill out all fields.')
       return
@@ -53,14 +51,12 @@ export default function AddTransactionModal({ isOpen, onClose, initialData }) {
     if (initialData) {
       editTransaction(initialData.id, payload)
     } else {
-      // practical random string logic for new ids
       addTransaction({ ...payload, id: `txn_${Date.now()}_${Math.floor(Math.random()*1000)}` })
     }
     
     onClose()
   }
 
-  // hardcoded list as given, no need to over-engineer 
   const categories = ['Salary', 'Freelance', 'Investment', 'Food', 'Rent', 'Transport', 'Entertainment', 'Shopping', 'Utilities', 'Healthcare']
 
   return (
@@ -87,7 +83,7 @@ export default function AddTransactionModal({ isOpen, onClose, initialData }) {
             <select 
               value={formData.type}
               onChange={(e) => setFormData({...formData, type: e.target.value})}
-              className="px-3 py-2 bg-[var(--bg-base)] border border-[var(--border)] rounded-lg text-sm text-[var(--text)] focus:outline-none focus:border-[var(--accent)] transition-colors cursor-pointer"
+              className="px-3 py-2.5 bg-[var(--bg-base)] border border-[var(--border)] rounded-lg text-sm text-[var(--text)] focus:outline-none focus:border-[var(--accent)] transition-colors cursor-pointer"
             >
               <option value="expense">Expense</option>
               <option value="income">Income</option>
@@ -101,7 +97,7 @@ export default function AddTransactionModal({ isOpen, onClose, initialData }) {
               value={formData.description}
               onChange={(e) => setFormData({...formData, description: e.target.value})}
               placeholder="e.g. Swiggy order"
-              className="px-3 py-2 bg-[var(--bg-base)] border border-[var(--border)] rounded-lg text-sm text-[var(--text)] focus:outline-none focus:border-[var(--accent)] transition-colors"
+              className="px-3 py-2.5 bg-[var(--bg-base)] border border-[var(--border)] rounded-lg text-sm text-[var(--text)] focus:outline-none focus:border-[var(--accent)] transition-colors"
             />
           </div>
           
@@ -117,7 +113,7 @@ export default function AddTransactionModal({ isOpen, onClose, initialData }) {
                   placeholder="0.00"
                   min="0"
                   step="0.01"
-                  className="w-full pl-7 pr-3 py-2 bg-[var(--bg-base)] border border-[var(--border)] rounded-lg text-sm text-[var(--text)] focus:outline-none focus:border-[var(--accent)] transition-colors"
+                  className="w-full pl-7 pr-3 py-2.5 bg-[var(--bg-base)] border border-[var(--border)] rounded-lg text-sm text-[var(--text)] focus:outline-none focus:border-[var(--accent)] transition-colors"
                 />
               </div>
             </div>
@@ -128,7 +124,7 @@ export default function AddTransactionModal({ isOpen, onClose, initialData }) {
                 type="date" 
                 value={formData.date}
                 onChange={(e) => setFormData({...formData, date: e.target.value})}
-                className="px-3 py-2 bg-[var(--bg-base)] border border-[var(--border)] rounded-lg text-sm text-[var(--text)] focus:outline-none focus:border-[var(--accent)] transition-colors cursor-pointer"
+                className="px-3 py-2.5 bg-[var(--bg-base)] border border-[var(--border)] rounded-lg text-sm text-[var(--text)] focus:outline-none focus:border-[var(--accent)] transition-colors cursor-pointer"
               />
             </div>
           </div>
@@ -138,7 +134,7 @@ export default function AddTransactionModal({ isOpen, onClose, initialData }) {
             <select 
               value={formData.category}
               onChange={(e) => setFormData({...formData, category: e.target.value})}
-              className="px-3 py-2 bg-[var(--bg-base)] border border-[var(--border)] rounded-lg text-sm text-[var(--text)] focus:outline-none focus:border-[var(--accent)] transition-colors cursor-pointer"
+              className="px-3 py-2.5 bg-[var(--bg-base)] border border-[var(--border)] rounded-lg text-sm text-[var(--text)] focus:outline-none focus:border-[var(--accent)] transition-colors cursor-pointer"
             >
               {categories.map(c => (
                 <option key={c} value={c}>{c}</option>
@@ -150,13 +146,13 @@ export default function AddTransactionModal({ isOpen, onClose, initialData }) {
             <button 
               type="button" 
               onClick={onClose}
-              className="px-4 py-2 text-sm font-medium text-[var(--text)] bg-[var(--bg-base)] border border-[var(--border)] rounded-lg hover:bg-white/5 transition-colors"
+              className="px-4 py-2.5 text-sm font-medium text-[var(--text)] bg-[var(--bg-base)] border border-[var(--border)] rounded-lg hover:bg-white/5 transition-colors"
             >
               Cancel
             </button>
             <button 
               type="submit"
-              className="px-4 py-2 text-sm font-medium text-white bg-[var(--accent)] rounded-lg hover:bg-[var(--accent)]/90 transition-colors shadow-sm"
+              className="px-4 py-2.5 text-sm font-medium text-white bg-[var(--accent)] rounded-lg hover:bg-[var(--accent)]/90 transition-colors shadow-sm"
             >
               {initialData ? 'Save Changes' : 'Add Transaction'}
             </button>

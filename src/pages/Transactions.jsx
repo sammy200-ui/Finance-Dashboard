@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
-import { Plus } from 'lucide-react'
+import { Plus, Download } from 'lucide-react'
+import { exportToCSV } from '../utils/formatters'
 import { useStore } from '../store/useStore'
 import TransactionFilters from '../components/transactions/TransactionFilters'
 import TransactionTable from '../components/transactions/TransactionTable'
@@ -20,27 +21,22 @@ export default function Transactions() {
   
   const isAdmin = role === 'admin'
   
-  // heavily filtering via useMemo so it only fires when reactive states change
   const filteredTransactions = useMemo(() => {
     let result = [...transactions]
     
-    // search
     if (filters.search) {
       const q = filters.search.toLowerCase()
       result = result.filter(t => t.description.toLowerCase().includes(q))
     }
     
-    // category filter
     if (filters.category !== 'all') {
       result = result.filter(t => t.category.toLowerCase() === filters.category.toLowerCase())
     }
     
-    // income/expense toggle
     if (filters.type !== 'all') {
       result = result.filter(t => t.type === filters.type)
     }
     
-    // sophisticated sort options
     result.sort((a, b) => {
       if (filters.sortBy === 'date') {
         const dateA = new Date(a.date).getTime()
@@ -55,7 +51,6 @@ export default function Transactions() {
     return result
   }, [transactions, filters])
 
-  // Callbacks passed to our row component elements inside the table
   const handleEdit = (txn) => {
     setEditingTxn(txn)
     setIsModalOpen(true)
@@ -67,27 +62,33 @@ export default function Transactions() {
   }
 
   return (
-    <div className="flex flex-col h-full bg-[var(--bg-base)]">
-      {/* Header framing wrapper */}
-      <div className="flex items-center justify-between mb-6">
+    <div className="flex flex-col gap-6 h-full bg-[var(--bg-base)]">
+      <div className="flex items-center justify-between">
         <div>
           <h2 className="text-xl font-semibold text-[var(--text)]">Transactions</h2>
           <p className="text-sm text-[var(--muted)] mt-1">Manage and track your activity.</p>
         </div>
         
-        {/* Only admins are authorized to add new events */}
         {isAdmin && (
-          <button 
-            onClick={handleAddNew}
-            className="flex items-center gap-2 px-4 py-2 bg-[var(--accent)] text-white text-sm font-medium rounded-lg hover:bg-[var(--accent)]/90 transition-colors shadow-sm"
-          >
-            <Plus size={16} />
-            <span className="hidden sm:inline">Add Transaction</span>
-          </button>
+          <div className="flex items-center gap-3">
+            <button 
+              onClick={() => exportToCSV(filteredTransactions)}
+              className="flex items-center gap-2 px-3 py-2 bg-[var(--bg-card)] border border-[var(--border)] text-[var(--text)] text-sm font-medium rounded-lg hover:border-[var(--accent)] transition-colors shadow-sm"
+            >
+              <Download size={16} />
+              <span className="hidden sm:inline">Export CSV</span>
+            </button>
+            <button 
+              onClick={handleAddNew}
+              className="flex items-center gap-2 px-4 py-2 bg-[var(--accent)] text-white text-sm font-medium rounded-lg hover:bg-[var(--accent)]/90 transition-colors shadow-sm"
+            >
+              <Plus size={16} />
+              <span className="hidden sm:inline">Add Transaction</span>
+            </button>
+          </div>
         )}
       </div>
       
-      {/* Filter wrapper injecting Zustand states automatically natively */}
       <TransactionFilters filters={filters} updateFilter={setFilter} />
       
       <TransactionTable 
@@ -98,7 +99,6 @@ export default function Transactions() {
         onClearFilters={resetFilters}
       />
       
-      {/* Modal element mounted selectively */}
       {isModalOpen && (
         <AddTransactionModal 
           isOpen={isModalOpen}

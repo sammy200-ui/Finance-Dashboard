@@ -10,7 +10,6 @@ const navItems = [
 function Sidebar({ isOpen, onClose }) {
   return (
     <>
-      {/* overlay for mobile */}
       {isOpen && (
         <div
           className="fixed inset-0 bg-black/50 z-20 lg:hidden"
@@ -26,23 +25,21 @@ function Sidebar({ isOpen, onClose }) {
           ${isOpen ? 'translate-x-0' : '-translate-x-full'}
         `}
       >
-        {/* logo */}
-        <div className="flex items-center justify-between px-5 py-5">
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-lg flex items-center justify-center text-white text-xs font-bold bg-[var(--accent)]">
+        <div className="flex items-center justify-between px-5 py-6">
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-sm font-bold bg-[var(--accent)]">
               F
             </div>
-            <span className="font-semibold text-base text-[var(--text)]">
+            <span className="font-semibold text-lg text-[var(--text)]">
               FinTrack
             </span>
           </div>
-          {/* close btn — mobile only */}
           <button onClick={onClose} className="lg:hidden text-[var(--muted)]">
             <X size={18} />
           </button>
         </div>
 
-        <nav className="flex-1 px-3 mt-2 space-y-1">
+        <nav className="flex-1 px-4 mt-3 space-y-2">
           {navItems.map(({ to, label, icon: Icon }) => (
             <NavLink
               key={to}
@@ -50,22 +47,18 @@ function Sidebar({ isOpen, onClose }) {
               end={to === '/'}
               onClick={onClose}
               className={({ isActive }) =>
-                `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors duration-150
+                `flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors duration-150
                 ${isActive
                   ? 'bg-[var(--accent)] text-white'
-                  : 'text-[var(--muted)] hover:bg-white/5'
+                  : 'text-[var(--muted)] hover:bg-white/5 hover:text-[var(--text)]'
                 }`
               }
             >
-              <Icon size={17} />
+              <Icon size={18} />
               {label}
             </NavLink>
           ))}
         </nav>
-
-        <div className="px-5 py-4 text-xs text-[var(--muted)] border-t border-[var(--border)]">
-          v1.0 · FinTrack
-        </div>
       </aside>
     </>
   )

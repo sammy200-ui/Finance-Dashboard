@@ -25,13 +25,11 @@ export function getByCategory(transactions) {
 }
 
 export function getMonthlyTotals(transactions) {
-  // sort by date ascending so chart X axis looks chronological
   const sorted = [...transactions].sort((a, b) => new Date(a.date) - new Date(b.date))
   const monthMap = {}
   
   sorted.forEach(t => {
     const d = new Date(t.date)
-    // gives us "Nov", "Dec", etc.
     const month = d.toLocaleString('en-US', { month: 'short' }) 
     
     if (!monthMap[month]) {

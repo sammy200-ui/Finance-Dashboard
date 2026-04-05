@@ -11,10 +11,8 @@ import {
 } from '../utils/calculations'
 
 export default function Dashboard() {
-  // pulling state from zustand
   const transactions = useStore(state => state.transactions)
   
-  // computing aggregated numbers directly here
   const totalIncome = getTotalIncome(transactions)
   const totalExpenses = getTotalExpenses(transactions)
   const totalBalance = totalIncome - totalExpenses
@@ -29,8 +27,7 @@ export default function Dashboard() {
         <p className="text-sm text-[var(--muted)] mt-1">Here is your financial summary and trends.</p>
       </div>
       
-      {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         <SummaryCard 
           label="Total Balance" 
           amount={formatCurrency(totalBalance)} 
@@ -48,8 +45,7 @@ export default function Dashboard() {
         />
       </div>
 
-      {/* Charts */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
         <div className="lg:col-span-2">
           <BalanceTrendChart data={monthlyData} />
         </div>

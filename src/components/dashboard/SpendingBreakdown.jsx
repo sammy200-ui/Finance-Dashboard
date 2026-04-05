@@ -1,6 +1,5 @@
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts'
 
-// custom color palette matching the dark theme vibes
 const COLORS = ['#6366f1', '#8b5cf6', '#d946ef', '#ec4899', '#f43f5e', '#f97316', '#eab308']
 
 export default function SpendingBreakdown({ data }) {
@@ -12,7 +11,6 @@ export default function SpendingBreakdown({ data }) {
     )
   }
 
-  // filter out zero values if any
   const chartData = data.filter(item => item.value > 0)
 
   return (

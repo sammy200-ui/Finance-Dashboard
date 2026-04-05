@@ -11,7 +11,6 @@ export default function CategoryBreakdownChart({ data }) {
     )
   }
 
-  // sort to show highest expenses first elegantly, avoiding too much overflow natively
   const sortedData = [...data].sort((a, b) => b.value - a.value).slice(0, 8)
 
   return (

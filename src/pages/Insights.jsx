@@ -7,7 +7,6 @@ import { getBiggestExpense, getByCategory, getMonthlyTotals } from '../utils/cal
 export default function Insights() {
   const transactions = useStore(state => state.transactions)
 
-  // Dynamically evaluating calculations against livedata 
   const topExpense = getBiggestExpense(transactions)
   const categoryData = getByCategory(transactions)
   const monthlyData = getMonthlyTotals(transactions)
@@ -20,22 +19,17 @@ export default function Insights() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-        {/* Top Expense */}
         <div className="lg:col-span-1">
           <TopExpenseCard transaction={topExpense} />
         </div>
         
-        {/* Placed side-by-side cleanly dropping into a stack structure on responsive breakpoints automatically via grid-cols */}
         <div className="lg:col-span-2">
           <IncomeVsExpenseChart data={monthlyData} />
         </div>
       </div>
 
-      {/* Spans across taking visual emphasis off the tight charts to let it breathe */}
-      <div className="grid grid-cols-1 gap-5">
-         <div className="w-full">
-           <CategoryBreakdownChart data={categoryData} />
-         </div>
+      <div className="w-full">
+        <CategoryBreakdownChart data={categoryData} />
       </div>
     </div>
   )

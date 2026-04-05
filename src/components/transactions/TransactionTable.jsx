@@ -2,7 +2,6 @@ import TransactionRow from './TransactionRow'
 import EmptyState from '../ui/EmptyState'
 
 function TransactionTable({ transactions, isAdmin, onEdit, onDelete, onClearFilters }) {
-  
   if (!transactions || transactions.length === 0) {
     return (
       <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl overflow-hidden shadow-sm fade-in">
@@ -17,13 +16,13 @@ function TransactionTable({ transactions, isAdmin, onEdit, onDelete, onClearFilt
         <table className="w-full text-left border-collapse min-w-[700px]">
           <thead>
             <tr className="border-b border-[var(--border)] bg-[var(--bg-base)]">
-              <th className="px-4 py-3 text-xs font-semibold text-[var(--muted)] uppercase tracking-wider w-32">Date</th>
-              <th className="px-4 py-3 text-xs font-semibold text-[var(--muted)] uppercase tracking-wider">Description</th>
-              <th className="px-4 py-3 text-xs font-semibold text-[var(--muted)] uppercase tracking-wider w-32">Category</th>
-              <th className="px-4 py-3 text-xs font-semibold text-[var(--muted)] uppercase tracking-wider w-24">Type</th>
-              <th className="px-4 py-3 text-xs font-semibold text-[var(--muted)] uppercase tracking-wider text-right w-32">Amount</th>
+              <th className="px-5 py-3.5 text-xs font-semibold text-[var(--muted)] uppercase tracking-wider w-32">Date</th>
+              <th className="px-5 py-3.5 text-xs font-semibold text-[var(--muted)] uppercase tracking-wider">Description</th>
+              <th className="px-5 py-3.5 text-xs font-semibold text-[var(--muted)] uppercase tracking-wider w-32">Category</th>
+              <th className="px-5 py-3.5 text-xs font-semibold text-[var(--muted)] uppercase tracking-wider w-24">Type</th>
+              <th className="px-5 py-3.5 text-xs font-semibold text-[var(--muted)] uppercase tracking-wider text-right w-32">Amount</th>
               {isAdmin && (
-                <th className="px-4 py-3 text-xs font-semibold text-[var(--muted)] uppercase tracking-wider text-right w-24">Actions</th>
+                <th className="px-5 py-3.5 text-xs font-semibold text-[var(--muted)] uppercase tracking-wider text-right w-24">Actions</th>
               )}
             </tr>
           </thead>

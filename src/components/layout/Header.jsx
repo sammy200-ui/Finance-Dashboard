@@ -1,6 +1,7 @@
-import { Menu, User } from 'lucide-react'
+import { Menu } from 'lucide-react'
 import { useLocation } from 'react-router-dom'
 import RoleToggle from '../ui/RoleToggle'
+import ThemeToggle from '../ui/ThemeToggle'
 
 const pageTitles = {
   '/': 'Dashboard',
@@ -14,10 +15,9 @@ function Header({ onMenuOpen }) {
 
   return (
     <header
-      className="h-14 flex items-center justify-between px-5 sticky top-0 z-10 bg-[var(--bg-base)] border-b border-[var(--border)]"
+      className="h-14 flex items-center justify-between px-6 sticky top-0 z-10 bg-[var(--bg-base)] border-b border-[var(--border)]"
     >
       <div className="flex items-center gap-3">
-        
         <button
           onClick={onMenuOpen}
           className="lg:hidden text-[var(--muted)]"
@@ -29,15 +29,9 @@ function Header({ onMenuOpen }) {
         </h1>
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-3">
+        <ThemeToggle />
         <RoleToggle />
-        
-        
-        <div 
-          className="w-8 h-8 rounded-full flex items-center justify-center overflow-hidden bg-[var(--bg-card)] border border-[var(--border)]"
-        >
-          <User size={16} className="text-[var(--muted)]" />
-        </div>
       </div>
     </header>
   )
