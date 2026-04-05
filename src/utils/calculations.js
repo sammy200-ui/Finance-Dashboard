@@ -47,6 +47,8 @@ export function getMonthlyTotals(transactions) {
   
   return Object.keys(monthMap).map(month => ({
     name: month,
+    income: monthMap[month].income,
+    expense: monthMap[month].expense,
     balance: monthMap[month].income - monthMap[month].expense
   }))
 }
