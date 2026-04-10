@@ -2,6 +2,17 @@ import { useState, useEffect } from 'react'
 import { X } from 'lucide-react'
 import { useStore } from '../../store/useStore'
 
+const inputStyle = {
+  padding: '10px 12px',
+  background: 'var(--bg-base)',
+  border: '1px solid var(--border)',
+  borderRadius: '10px',
+  fontSize: '14px',
+  color: 'var(--text)',
+  outline: 'none',
+  width: '100%',
+}
+
 export default function AddTransactionModal({ isOpen, onClose, initialData }) {
   const addTransaction = useStore(state => state.addTransaction)
   const editTransaction = useStore(state => state.editTransaction)
@@ -60,52 +71,80 @@ export default function AddTransactionModal({ isOpen, onClose, initialData }) {
   const categories = ['Salary', 'Freelance', 'Investment', 'Food', 'Rent', 'Transport', 'Entertainment', 'Shopping', 'Utilities', 'Healthcare']
 
   return (
-    <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
-      <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl w-full max-w-md shadow-xl fade-in" style={{ animationDuration: '0.2s' }}>
-        <div className="flex items-center justify-between p-5 border-b border-[var(--border)] relative">
-          <h3 className="text-lg font-medium text-[var(--text)]">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center"
+      style={{ background: 'rgba(0,0,0,0.6)', padding: '16px' }}
+    >
+      <div 
+        className="w-full fade-in"
+        style={{
+          maxWidth: '440px',
+          background: 'var(--bg-card)',
+          border: '1px solid var(--border)',
+          borderRadius: '16px',
+          boxShadow: '0 24px 48px rgba(0,0,0,0.2)',
+          animationDuration: '0.2s',
+        }}
+      >
+        <div 
+          className="flex items-center justify-between"
+          style={{ padding: '20px 24px', borderBottom: '1px solid var(--border)' }}
+        >
+          <h3 className="text-lg font-semibold" style={{ color: 'var(--text)' }}>
             {initialData ? 'Edit Transaction' : 'Add Transaction'}
           </h3>
-          <button onClick={onClose} className="text-[var(--muted)] hover:text-[var(--text)] transition-colors p-1" title="Close">
+          <button 
+            onClick={onClose} 
+            className="transition-colors"
+            style={{ color: 'var(--muted)', padding: '4px', background: 'none', border: 'none', cursor: 'pointer', borderRadius: '6px' }}
+          >
             <X size={18} />
           </button>
         </div>
         
-        <form onSubmit={handleSubmit} className="p-5 flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col" style={{ padding: '24px', gap: '16px' }}>
           {error && (
-            <div className="text-xs font-medium text-red-500 bg-red-500/10 px-3 py-2.5 rounded border border-red-500/20">
+            <div 
+              className="text-xs font-medium"
+              style={{
+                color: 'var(--red)',
+                background: 'var(--red-light)',
+                padding: '10px 14px',
+                borderRadius: '10px',
+              }}
+            >
               {error}
             </div>
           )}
           
-          <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-medium text-[var(--muted)]">Type</label>
+          <div className="flex flex-col" style={{ gap: '6px' }}>
+            <label className="text-sm font-medium" style={{ color: 'var(--muted)' }}>Type</label>
             <select 
               value={formData.type}
               onChange={(e) => setFormData({...formData, type: e.target.value})}
-              className="px-3 py-2.5 bg-[var(--bg-base)] border border-[var(--border)] rounded-lg text-sm text-[var(--text)] focus:outline-none focus:border-[var(--accent)] transition-colors cursor-pointer"
+              style={{ ...inputStyle, cursor: 'pointer' }}
             >
               <option value="expense">Expense</option>
               <option value="income">Income</option>
             </select>
           </div>
           
-          <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-medium text-[var(--muted)]">Description</label>
+          <div className="flex flex-col" style={{ gap: '6px' }}>
+            <label className="text-sm font-medium" style={{ color: 'var(--muted)' }}>Description</label>
             <input 
               type="text" 
               value={formData.description}
               onChange={(e) => setFormData({...formData, description: e.target.value})}
               placeholder="e.g. Swiggy order"
-              className="px-3 py-2.5 bg-[var(--bg-base)] border border-[var(--border)] rounded-lg text-sm text-[var(--text)] focus:outline-none focus:border-[var(--accent)] transition-colors"
+              style={inputStyle}
             />
           </div>
           
-          <div className="flex gap-4">
-            <div className="flex flex-col gap-1.5 flex-1">
-              <label className="text-sm font-medium text-[var(--muted)]">Amount</label>
+          <div className="flex" style={{ gap: '16px' }}>
+            <div className="flex flex-col flex-1" style={{ gap: '6px' }}>
+              <label className="text-sm font-medium" style={{ color: 'var(--muted)' }}>Amount</label>
               <div className="relative">
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--muted)] text-sm">₹</span>
+                <span className="absolute text-sm" style={{ left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--muted)' }}>₹</span>
                 <input 
                   type="number" 
                   value={formData.amount}
@@ -113,28 +152,28 @@ export default function AddTransactionModal({ isOpen, onClose, initialData }) {
                   placeholder="0.00"
                   min="0"
                   step="0.01"
-                  className="w-full pl-7 pr-3 py-2.5 bg-[var(--bg-base)] border border-[var(--border)] rounded-lg text-sm text-[var(--text)] focus:outline-none focus:border-[var(--accent)] transition-colors"
+                  style={{ ...inputStyle, paddingLeft: '28px' }}
                 />
               </div>
             </div>
             
-            <div className="flex flex-col gap-1.5 flex-1">
-              <label className="text-sm font-medium text-[var(--muted)]">Date</label>
+            <div className="flex flex-col flex-1" style={{ gap: '6px' }}>
+              <label className="text-sm font-medium" style={{ color: 'var(--muted)' }}>Date</label>
               <input 
                 type="date" 
                 value={formData.date}
                 onChange={(e) => setFormData({...formData, date: e.target.value})}
-                className="px-3 py-2.5 bg-[var(--bg-base)] border border-[var(--border)] rounded-lg text-sm text-[var(--text)] focus:outline-none focus:border-[var(--accent)] transition-colors cursor-pointer"
+                style={{ ...inputStyle, cursor: 'pointer' }}
               />
             </div>
           </div>
           
-          <div className="flex flex-col gap-1.5 mb-2">
-            <label className="text-sm font-medium text-[var(--muted)]">Category</label>
+          <div className="flex flex-col" style={{ gap: '6px', marginBottom: '4px' }}>
+            <label className="text-sm font-medium" style={{ color: 'var(--muted)' }}>Category</label>
             <select 
               value={formData.category}
               onChange={(e) => setFormData({...formData, category: e.target.value})}
-              className="px-3 py-2.5 bg-[var(--bg-base)] border border-[var(--border)] rounded-lg text-sm text-[var(--text)] focus:outline-none focus:border-[var(--accent)] transition-colors cursor-pointer"
+              style={{ ...inputStyle, cursor: 'pointer' }}
             >
               {categories.map(c => (
                 <option key={c} value={c}>{c}</option>
@@ -142,17 +181,36 @@ export default function AddTransactionModal({ isOpen, onClose, initialData }) {
             </select>
           </div>
           
-          <div className="flex justify-end gap-3 pt-4 border-t border-[var(--border)]">
+          <div 
+            className="flex justify-end"
+            style={{ gap: '10px', paddingTop: '16px', borderTop: '1px solid var(--border)' }}
+          >
             <button 
               type="button" 
               onClick={onClose}
-              className="px-4 py-2.5 text-sm font-medium text-[var(--text)] bg-[var(--bg-base)] border border-[var(--border)] rounded-lg hover:bg-white/5 transition-colors"
+              className="text-sm font-medium transition-colors"
+              style={{
+                padding: '10px 18px',
+                color: 'var(--text)',
+                background: 'var(--bg-base)',
+                border: '1px solid var(--border)',
+                borderRadius: '10px',
+                cursor: 'pointer',
+              }}
             >
               Cancel
             </button>
             <button 
               type="submit"
-              className="px-4 py-2.5 text-sm font-medium text-white bg-[var(--accent)] rounded-lg hover:bg-[var(--accent)]/90 transition-colors shadow-sm"
+              className="text-sm font-semibold text-white transition-colors"
+              style={{
+                padding: '10px 20px',
+                background: 'var(--accent)',
+                border: 'none',
+                borderRadius: '10px',
+                cursor: 'pointer',
+                boxShadow: '0 2px 8px rgba(99,102,241,0.3)',
+              }}
             >
               {initialData ? 'Save Changes' : 'Add Transaction'}
             </button>

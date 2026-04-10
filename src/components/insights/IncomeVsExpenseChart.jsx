@@ -3,30 +3,64 @@ import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianG
 export default function IncomeVsExpenseChart({ data }) {
   if (!data || data.length === 0) {
     return (
-      <div className="h-80 bg-[var(--bg-card)] border border-[var(--border)] rounded-xl flex items-center justify-center text-sm text-[var(--muted)] fade-in shadow-sm">
+      <div
+        className="flex items-center justify-center text-sm fade-in"
+        style={{
+          height: '380px',
+          background: 'var(--bg-card)',
+          border: '1px solid var(--border)',
+          borderRadius: '16px',
+          color: 'var(--muted)',
+        }}
+      >
         No trend data available
       </div>
     )
   }
 
   return (
-    <div className="h-80 bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-5 flex flex-col gap-4 fade-in shadow-sm">
-      <h3 className="text-base font-semibold text-[var(--text)]">Income vs Expense Trends</h3>
+    <div 
+      className="flex flex-col fade-in"
+      style={{
+        height: '380px',
+        background: 'var(--bg-card)',
+        border: '1px solid var(--border)',
+        borderRadius: '16px',
+        padding: '24px',
+        boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
+      }}
+    >
+      <div className="flex items-center justify-between" style={{ marginBottom: '20px' }}>
+        <div>
+          <h3 className="text-base font-semibold" style={{ color: 'var(--text)' }}>Income vs Expense Trends</h3>
+          <p className="text-xs" style={{ color: 'var(--muted)', marginTop: '2px' }}>Monthly comparison over time</p>
+        </div>
+        <div className="flex items-center" style={{ gap: '16px' }}>
+          <div className="flex items-center" style={{ gap: '6px' }}>
+            <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--green)' }} />
+            <span className="text-xs" style={{ color: 'var(--muted)' }}>Income</span>
+          </div>
+          <div className="flex items-center" style={{ gap: '6px' }}>
+            <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--red)' }} />
+            <span className="text-xs" style={{ color: 'var(--muted)' }}>Expense</span>
+          </div>
+        </div>
+      </div>
       
-      <div className="flex-1 w-full h-full min-h-0">
+      <div className="flex-1 w-full min-h-0">
         <ResponsiveContainer width="100%" height="100%">
-          <AreaChart data={data} margin={{ top: 5, right: 0, left: -20, bottom: 0 }}>
+          <AreaChart data={data} margin={{ top: 5, right: 10, left: -10, bottom: 0 }}>
             <defs>
               <linearGradient id="colorIncome" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="var(--green)" stopOpacity={0.3}/>
-                <stop offset="95%" stopColor="var(--green)" stopOpacity={0}/>
+                <stop offset="5%" stopColor="var(--green)" stopOpacity={0.2}/>
+                <stop offset="95%" stopColor="var(--green)" stopOpacity={0.02}/>
               </linearGradient>
               <linearGradient id="colorExpense" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="var(--red)" stopOpacity={0.3}/>
-                <stop offset="95%" stopColor="var(--red)" stopOpacity={0}/>
+                <stop offset="5%" stopColor="var(--red)" stopOpacity={0.2}/>
+                <stop offset="95%" stopColor="var(--red)" stopOpacity={0.02}/>
               </linearGradient>
             </defs>
-            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--border)" opacity={0.5} />
+            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--border)" opacity={0.4} />
             <XAxis 
               dataKey="name" 
               axisLine={false}
@@ -42,26 +76,22 @@ export default function IncomeVsExpenseChart({ data }) {
             />
             <Tooltip 
               contentStyle={{ 
-                backgroundColor: 'var(--bg-base)', 
-                borderColor: 'var(--border)',
-                borderRadius: '8px',
-                color: 'var(--text)'
+                backgroundColor: 'var(--bg-card)', 
+                borderRadius: '12px',
+                border: '1px solid var(--border)',
+                boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
+                color: 'var(--text)',
+                padding: '12px 16px',
               }}
               itemStyle={{ textTransform: 'capitalize' }}
               formatter={(value) => `₹${value.toLocaleString('en-IN')}`}
-            />
-            <Legend 
-              verticalAlign="top" 
-              height={36} 
-              iconType="circle"
-              wrapperStyle={{ fontSize: '12px', color: 'var(--text)', right: 0, paddingTop: '4px' }}
             />
             <Area 
               type="monotone" 
               dataKey="income" 
               name="Income"
               stroke="var(--green)" 
-              strokeWidth={2}
+              strokeWidth={2.5}
               fillOpacity={1} 
               fill="url(#colorIncome)" 
             />
@@ -70,7 +100,7 @@ export default function IncomeVsExpenseChart({ data }) {
               dataKey="expense" 
               name="Expense"
               stroke="var(--red)" 
-              strokeWidth={2}
+              strokeWidth={2.5}
               fillOpacity={1} 
               fill="url(#colorExpense)" 
             />

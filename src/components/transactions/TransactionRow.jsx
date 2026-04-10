@@ -6,36 +6,38 @@ function TransactionRow({ txn, isAdmin, onEdit, onDelete }) {
   const isExpense = txn.type === "expense"
   
   return (
-    <tr className="hover:bg-[var(--bg-hover)] transition-colors group">
-      <td className="px-6 py-4 text-sm text-[var(--muted)]">
+    <tr className="group transition-colors" style={{ borderBottom: '1px solid var(--border)' }}>
+      <td style={{ padding: '14px 24px', fontSize: '13px', color: 'var(--muted)' }}>
         {formatDate(txn.date)}
       </td>
-      <td className="px-6 py-4 text-sm font-medium text-[var(--text)]">
+      <td style={{ padding: '14px 24px', fontSize: '13px', fontWeight: 500, color: 'var(--text)' }}>
         {txn.description}
       </td>
-      <td className="px-6 py-4 text-sm">
+      <td style={{ padding: '14px 24px', fontSize: '13px' }}>
         <Badge variant="category">{txn.category}</Badge>
       </td>
-      <td className="px-6 py-4 text-sm">
+      <td style={{ padding: '14px 24px', fontSize: '13px' }}>
         <Badge variant={txn.type}>{txn.type}</Badge>
       </td>
-      <td className={`px-6 py-4 text-sm font-semibold text-right`} style={{ color: isExpense ? 'var(--red)' : 'var(--green)' }}>
+      <td style={{ padding: '14px 24px', fontSize: '13px', fontWeight: 600, textAlign: 'right', color: isExpense ? 'var(--red)' : 'var(--green)' }}>
         {isExpense ? '-' : '+'}{formatCurrency(txn.amount)}
       </td>
       
       {isAdmin && (
-        <td className="px-6 py-4 text-sm text-right w-24">
-          <div className="flex justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+        <td style={{ padding: '14px 24px', fontSize: '13px', textAlign: 'right' }}>
+          <div className="flex justify-end opacity-0 group-hover:opacity-100 transition-opacity" style={{ gap: '4px' }}>
             <button 
               onClick={() => onEdit(txn)}
-              className="p-2 rounded-lg hover:bg-[var(--accent-light)] text-[var(--accent)] transition-colors"
+              className="transition-colors"
+              style={{ padding: '6px', borderRadius: '8px', color: 'var(--accent)', background: 'none', border: 'none', cursor: 'pointer' }}
               title="Edit"
             >
               <Edit2 size={14} />
             </button>
             <button 
               onClick={() => onDelete(txn.id)}
-              className="p-2 rounded-lg hover:bg-[var(--red-light)] text-[var(--red)] transition-colors"
+              className="transition-colors"
+              style={{ padding: '6px', borderRadius: '8px', color: 'var(--red)', background: 'none', border: 'none', cursor: 'pointer' }}
               title="Delete"
             >
               <Trash2 size={14} />

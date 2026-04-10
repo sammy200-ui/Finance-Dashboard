@@ -1,3 +1,4 @@
+import { Wallet, TrendingUp, TrendingDown } from 'lucide-react'
 import SummaryCard from '../components/dashboard/SummaryCard'
 import BalanceTrendChart from '../components/dashboard/BalanceTrendChart'
 import SpendingBreakdown from '../components/dashboard/SpendingBreakdown'
@@ -21,27 +22,33 @@ export default function Dashboard() {
   const categoryData = getByCategory(transactions)
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col" style={{ gap: '28px' }}>
       <div>
-        <h2 className="text-2xl font-bold text-[var(--text)]">Dashboard Overview</h2>
-        <p className="text-sm text-[var(--muted)] mt-1">Here is your financial summary and trends.</p>
+        <h2 className="text-2xl font-bold" style={{ color: 'var(--text)' }}>Dashboard Overview</h2>
+        <p className="text-sm mt-1" style={{ color: 'var(--muted)' }}>Here's your financial summary and trends.</p>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         <SummaryCard 
           label="Total Balance" 
           amount={formatCurrency(totalBalance)} 
-          trend={totalBalance >= 0 ? "up" : "down"} 
+          trend={totalBalance >= 0 ? "up" : "down"}
+          icon={Wallet}
+          accentColor="var(--accent)"
         />
         <SummaryCard 
           label="Total Income" 
           amount={formatCurrency(totalIncome)} 
-          trend="up" 
+          trend="up"
+          icon={TrendingUp}
+          accentColor="var(--green)"
         />
         <SummaryCard 
           label="Total Expenses" 
           amount={formatCurrency(totalExpenses)} 
-          trend="down" 
+          trend="down"
+          icon={TrendingDown}
+          accentColor="var(--red)"
         />
       </div>
 
