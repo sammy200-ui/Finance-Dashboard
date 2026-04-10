@@ -15,14 +15,14 @@ function TransactionTable({ transactions, isAdmin, onEdit, onDelete, onClearFilt
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse min-w-[700px]">
           <thead>
-            <tr className="border-b border-[var(--border)] bg-[var(--bg-base)]">
-              <th className="px-5 py-3.5 text-xs font-semibold text-[var(--muted)] uppercase tracking-wider w-32">Date</th>
-              <th className="px-5 py-3.5 text-xs font-semibold text-[var(--muted)] uppercase tracking-wider">Description</th>
-              <th className="px-5 py-3.5 text-xs font-semibold text-[var(--muted)] uppercase tracking-wider w-32">Category</th>
-              <th className="px-5 py-3.5 text-xs font-semibold text-[var(--muted)] uppercase tracking-wider w-24">Type</th>
-              <th className="px-5 py-3.5 text-xs font-semibold text-[var(--muted)] uppercase tracking-wider text-right w-32">Amount</th>
+            <tr className="border-b border-[var(--border)]" style={{ background: 'var(--bg-hover)' }}>
+              <th className="px-6 py-4 text-xs font-semibold text-[var(--muted)] uppercase tracking-wider w-32">Date</th>
+              <th className="px-6 py-4 text-xs font-semibold text-[var(--muted)] uppercase tracking-wider">Description</th>
+              <th className="px-6 py-4 text-xs font-semibold text-[var(--muted)] uppercase tracking-wider w-32">Category</th>
+              <th className="px-6 py-4 text-xs font-semibold text-[var(--muted)] uppercase tracking-wider w-24">Type</th>
+              <th className="px-6 py-4 text-xs font-semibold text-[var(--muted)] uppercase tracking-wider text-right w-32">Amount</th>
               {isAdmin && (
-                <th className="px-5 py-3.5 text-xs font-semibold text-[var(--muted)] uppercase tracking-wider text-right w-24">Actions</th>
+                <th className="px-6 py-4 text-xs font-semibold text-[var(--muted)] uppercase tracking-wider text-right w-24">Actions</th>
               )}
             </tr>
           </thead>

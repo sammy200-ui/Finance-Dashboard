@@ -12,9 +12,9 @@ export default function Insights() {
   const monthlyData = getMonthlyTotals(transactions)
 
   return (
-    <div className="flex flex-col gap-6 fade-in h-full">
+    <div className="flex flex-col gap-8 fade-in h-full">
       <div>
-        <h2 className="text-xl font-semibold text-[var(--text)]">Insights & Analytics</h2>
+        <h2 className="text-2xl font-bold text-[var(--text)]">Insights & Analytics</h2>
         <p className="text-sm text-[var(--muted)] mt-1">Deep dive into your financial habits and trends over time.</p>
       </div>
 

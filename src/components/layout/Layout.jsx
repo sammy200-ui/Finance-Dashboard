@@ -23,7 +23,7 @@ function Layout() {
       <div className="main-content">
         <Header onMenuOpen={() => setSidebarOpen(true)} />
 
-        <main style={{ flex: 1, padding: '1.5rem' }}>
+        <main className="flex-1 p-6 md:p-8">
           <Outlet />
         </main>
       </div>

@@ -21,9 +21,9 @@ export default function Dashboard() {
   const categoryData = getByCategory(transactions)
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-8">
       <div>
-        <h2 className="text-xl font-semibold text-[var(--text)]">Dashboard Overview</h2>
+        <h2 className="text-2xl font-bold text-[var(--text)]">Dashboard Overview</h2>
         <p className="text-sm text-[var(--muted)] mt-1">Here is your financial summary and trends.</p>
       </div>
       

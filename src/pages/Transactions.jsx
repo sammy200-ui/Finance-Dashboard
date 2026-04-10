@@ -62,10 +62,10 @@ export default function Transactions() {
   }
 
   return (
-    <div className="flex flex-col gap-6 h-full bg-[var(--bg-base)]">
-      <div className="flex items-center justify-between">
+    <div className="flex flex-col gap-6 h-full">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-semibold text-[var(--text)]">Transactions</h2>
+          <h2 className="text-2xl font-bold text-[var(--text)]">Transactions</h2>
           <p className="text-sm text-[var(--muted)] mt-1">Manage and track your activity.</p>
         </div>
         
@@ -73,14 +73,15 @@ export default function Transactions() {
           <div className="flex items-center gap-3">
             <button 
               onClick={() => exportToCSV(filteredTransactions)}
-              className="flex items-center gap-2 px-3 py-2 bg-[var(--bg-card)] border border-[var(--border)] text-[var(--text)] text-sm font-medium rounded-lg hover:border-[var(--accent)] transition-colors shadow-sm"
+              className="flex items-center gap-2 px-4 py-2.5 bg-[var(--bg-card)] border border-[var(--border)] text-[var(--text)] text-sm font-medium rounded-xl hover:border-[var(--accent)] hover:shadow-md transition-all duration-200"
             >
               <Download size={16} />
               <span className="hidden sm:inline">Export CSV</span>
             </button>
             <button 
               onClick={handleAddNew}
-              className="flex items-center gap-2 px-4 py-2 bg-[var(--accent)] text-white text-sm font-medium rounded-lg hover:bg-[var(--accent)]/90 transition-colors shadow-sm"
+              className="flex items-center gap-2 px-5 py-2.5 text-white text-sm font-semibold rounded-xl shadow-md hover:shadow-lg transition-all duration-200"
+              style={{ background: 'var(--accent)' }}
             >
               <Plus size={16} />
               <span className="hidden sm:inline">Add Transaction</span>
